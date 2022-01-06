@@ -1,0 +1,98 @@
+<nb-layout>
+  <nb-layout-header fixed><h1>JsonHelper</h1></nb-layout-header>
+  
+  <nb-layout-column>
+    <nb-layout-header ><h3>Create your Json Interface</h3></nb-layout-header>
+    <nb-card>
+      <nb-card-body>
+        
+          <nb-card>
+            <nb-card-body >
+              <form [formGroup]="fieldForm" class="row row-cols-lg-auto g-3 align-items-center justify-content-center"  (ngSubmit)="addField()">
+                <div class="col-12">
+                  <input type="text" nbInput placeholder="Field name" name="field" formControlName="fieldName">
+                </div>
+                <div class="col-12">
+                  <nb-select name="field" placeholder="Select field type" formControlName="fieldType">
+                    <nb-option value="0">number</nb-option>
+                    <nb-option value="1">string</nb-option>
+                    <nb-option value="2">array</nb-option>
+                  </nb-select>
+                </div>
+                <div class="col-12" *ngIf="this.f['fieldType'].value==2">
+                  <nb-select name="field" placeholder="Select field type" formControlName="fieldType">
+                    <nb-option value="0">number</nb-option>
+                    <nb-option value="1">string</nb-option>
+                    <nb-option value="2">string</nb-option>
+
+                  </nb-select>
+                </div>
+
+                <div class="col-12">
+                  <button nbButton status="primary" [disabled]="!fieldForm.valid" type="submit">Add field</button>
+                </div>
+              </form>
+
+
+            </nb-card-body>
+          </nb-card>
+        
+      </nb-card-body>
+    </nb-card>
+    <nb-card>
+      <nb-card-body>
+        <ng-container>
+          <ng-container *ngFor="let f of formFields; let i = index" >
+            <div [ngSwitch]="f.type">
+              <label class="form-label" for="f.name" *ngSwitchCase="0">{{f.name+":number"}}</label>
+              <label class="form-label" for="f.name" *ngSwitchCase="1">{{f.name+":string"}}</label>
+              <label class="form-label" for="f.name" *ngSwitchCase="2">{{f.name+":array"}}</label>
+            </div>
+            <div class="input-group mb-3">
+              <input nbInput [(ngModel)]="jsonForm[i].value" class="form-control" name="f.name" *ngIf="f.type == 0"  type="number">
+              <input nbInput [(ngModel)]="jsonForm[i].value" class="form-control" name="f.name" *ngIf="f.type == 1"  type="text">
+            </div>         
+            
+            
+          </ng-container>
+          <div class="col-12">
+            <button nbButton status="primary" (click)="log()">Add item</button>
+          </div>
+
+        </ng-container>
+        
+        
+      </nb-card-body>
+    </nb-card>
+  </nb-layout-column>
+
+  <nb-layout-column>
+    <nb-card>
+      <nb-card-header>
+        <h3>Your Interface:</h3>
+      </nb-card-header>
+      <nb-card-body>
+        <p *ngFor="let field of formFields" [ngSwitch]="field.type">
+          {{field.name}}
+          <span *ngSwitchCase="0">: number</span>
+          <span *ngSwitchCase="1">: string</span>
+          <span *ngSwitchCase="2">: array</span>
+          <span *ngSwitchDefault></span>        
+        </p>
+      </nb-card-body>
+    </nb-card>
+
+  </nb-layout-column>
+
+  <nb-layout-column>
+    <nb-card>
+      <nb-card-header><h3>Your Output JSON</h3></nb-card-header>
+      <nb-card-body> <pre>&#123; <br>{{outputJson}} <br>&#125;</pre>  </nb-card-body>
+
+    </nb-card>
+    
+  </nb-layout-column>
+
+
+
+</nb-layout>
