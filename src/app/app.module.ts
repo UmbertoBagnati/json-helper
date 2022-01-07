@@ -9,13 +9,17 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes} from '@angular/router'; // we also need angular router for Nebular to function properly
 import { FormsModule } from '@angular/forms';
+import { DynamicFormQuestionComponent } from './dynamic-form-question/dynamic-form-question.component';
+import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
 const appRoutes: Routes = [
   { path: '**', component: AppComponent }
 ];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DynamicFormQuestionComponent,
+    DynamicFormComponent
   ],
 
   imports: [
