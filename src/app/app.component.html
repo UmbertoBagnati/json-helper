@@ -1,50 +1,15 @@
-<nb-layout>
-  <nb-layout-header fixed><h1>JsonHelper</h1></nb-layout-header>
-  
-  <nb-layout-column>
-    <nb-layout-header ><h3>Create your Json Interface</h3></nb-layout-header>
-    <nb-card>
-      <nb-card-body>
-        
-          <nb-card>
-            <nb-card-body >
-              <div>
-                <h2>Job Application for Heroes</h2>
-                <app-dynamic-form [questions]="questions$ | async"></app-dynamic-form>
-              </div>
-
-            </nb-card-body>
-          </nb-card>
-        
-      </nb-card-body>
-    </nb-card>
-    <nb-card>
-      <nb-card-body>       
-        
-      </nb-card-body>
-    </nb-card>
-  </nb-layout-column>
-
-  <nb-layout-column>
-    <nb-card>
-      <nb-card-header>
-        <h3>Your Interface:</h3>
-      </nb-card-header>
-      <nb-card-body>
-      </nb-card-body>
-    </nb-card>
-
-  </nb-layout-column>
-
-  <nb-layout-column>
-    <nb-card>
-      <nb-card-header><h3>Your Output JSON</h3></nb-card-header>
-      <nb-card-body> </nb-card-body>
-
-    </nb-card>
-    
-  </nb-layout-column>
-
-
-
-</nb-layout>
+<div>
+  <h2>Job Application for Heroes</h2>
+  <ng-template adHost></ng-template>  
+ 
+  <div>
+    <input type="text" placeholder="Field Name" [(ngModel)]="fieldName">
+    <select type="number" [(ngModel)]="typeSelected" name="type" id="">
+      <option  value="0">number</option>
+      <option value="1">string</option>
+      <option value="2">array</option>
+      <option value="3">object</option>
+    </select>
+    <button (click)="addForm()">add</button>
+  </div>
+</div>

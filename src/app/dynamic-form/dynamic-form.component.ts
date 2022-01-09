@@ -12,6 +12,7 @@ import { QuestionControlService } from '../question-control.service';
 export class DynamicFormComponent implements OnInit {
 
   @Input() questions: QuestionBase<string>[] | null = [];
+  
   form!: FormGroup;
   payLoad = '';
 

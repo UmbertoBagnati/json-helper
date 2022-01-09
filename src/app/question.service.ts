@@ -9,59 +9,23 @@ import { of } from 'rxjs';
 export class QuestionService {
 
   // TODO: get from a remote source of question metadata
-  getStringQuestions() {
+  getFieldType() {
+
     const questions: QuestionBase<string>[] = [
 
       new DropdownQuestion({
         key: 'fieldType',
-        label: 'Type',
+        label: 'Field Type',
         options: [
-          {key: 'number',  value: 'Number'},
-          {key: 'string',  value: 'String'},
-          {key: 'array',   value: 'Array'},
-          {key: 'object', value: 'object'}
+          {key: '0',  value: 'numebr'},
+          {key: '1',  value: 'string'},
+          {key: '2',   value: 'array'},
+          {key: '3', value: 'object'}
         ],
-        required:true,
         order: 3
-      }),
-
-      new TextboxQuestion({
-        key: 'fieldName',
-        label: 'Field Name',
-        value: '',
-        required: true,
-        order: 1
-      }),
+      })
     ];
+
     return of(questions.sort((a, b) => a.order - b.order));
   }
-/*
-  getNumberQuestions() {
-    const questions: QuestionBase<number>[] = [
-
-      new DropdownQuestion({
-        key: 'fieldType',
-        label: 'Type',
-        options: [
-          {key: 'number',  value: 'Number'},
-          {key: 'string',  value: 'String'},
-          {key: 'array',   value: 'Array'},
-          {key: 'object', value: 'object'}
-        ],
-        required:true,
-        order: 3
-      }),
-
-      new TextboxQuestion({
-        key: 'fieldName',
-        label: 'Field Name',
-        value: '',
-        required: true,
-        order: 1
-      }),
-    ];
-    return of(questions.sort((a, b) => a.order - b.order));
-  }
-  */
-
 }
