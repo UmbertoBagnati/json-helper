@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Form } from '../form';
+import { FormInputs } from '../formInputs';
 
 @Component({
   selector: 'app-string-form',
@@ -9,19 +10,22 @@ import { Form } from '../form';
 })
 export class StringFormComponent implements OnInit, Form{
   stringForm!:FormGroup;
-  @Input() name: string="String Form";
+  @Input() formName: string="String Form";
 
 
   constructor(private fb : FormBuilder) { 
 
   }
+  sendControlsInputs(){    
+    return "\""+this.formName+"\":\""+this.stringForm.get('value')?.value+"\"";
+  }
+
   ngAfterViewInit(): void {
 
   }
 
   ngOnInit(): void {
     this.stringForm = this.fb.group({
-      name:['', Validators.required],
       value:['', Validators.required]
     });  
   }

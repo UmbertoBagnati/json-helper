@@ -1,0 +1,18 @@
+<h2>{{formName}} : Array</h2>
+<div [formGroup]="arrayForm">
+    <div formArrayName="values" *ngFor="let v of aForm.controls;let i = index">
+        <input type="text" [formControlName]="i">
+    
+    </div>
+</div>
+        <button (click)="addElementToArray()">Add El</button>
+
+
+
+<form #typeForm="ngForm" (ngSubmit)="addForm()" #selectType>
+<select type="number" [(ngModel)]="typeSelected" name="type" id="">
+    <option value="0">number</option>
+    <option value="1">string</option>
+  </select>
+  <button [disabled]="!typeForm.form.valid" type="submit">add</button>  
+</form>

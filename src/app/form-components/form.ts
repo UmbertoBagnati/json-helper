@@ -1,3 +1,7 @@
+import { FormInputs } from "./formInputs";
+
 export interface Form{
-    name:string;
+    formName:string;
+
+    sendControlsInputs():string;
 }

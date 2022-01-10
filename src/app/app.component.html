@@ -1,15 +1,5 @@
-<div>
-  <h2>Job Application for Heroes</h2>
-  <ng-template adHost></ng-template>  
+<div>    
  
-  <div>
-    <input type="text" placeholder="Field Name" [(ngModel)]="fieldName">
-    <select type="number" [(ngModel)]="typeSelected" name="type" id="">
-      <option  value="0">number</option>
-      <option value="1">string</option>
-      <option value="2">array</option>
-      <option value="3">object</option>
-    </select>
-    <button (click)="addForm()">add</button>
-  </div>
+<app-object-form #objectForm></app-object-form>
+<button (click)="getInputs()">Add to Json</button>
 </div>
