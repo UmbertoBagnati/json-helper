@@ -1,18 +1,24 @@
-<h2>{{formName}} : Array</h2>
-<div [formGroup]="arrayForm">
-    <div formArrayName="values" *ngFor="let v of aForm.controls;let i = index">
-        <input type="text" [formControlName]="i">
-    
-    </div>
-</div>
-        <button (click)="addElementToArray()">Add El</button>
+<nb-card>
+    <nb-card-header>
+        {{formName}} : Array
+    </nb-card-header>
+    <nb-card-body>
+        <div [formGroup]="arrayForm">
+            <div formArrayName="values" *ngFor="let v of aForm.controls;let i = index">
+                <input nbInput type="text" [formControlName]="i" class="m-2" placeholder="{{formName+i}}">
+            
+            </div>
+        </div>
+                <button nbButton *ngIf="selectionDone" (click)="addElementToArray()">Add El</button>
+        
+        <form #typeForm="ngForm" (ngSubmit)="addForm()" #selectType>
+        <nb-select type="number" placeholder="Select a type for array" [(ngModel)]="typeSelected" name="type" id="">
+            <nb-option value="0">number</nb-option>
+            <nb-option value="1">string</nb-option>
+        </nb-select>
+          <button nbButton status="warning" [disabled]="!typeForm.form.valid" type="submit">add</button>  
+        </form>
+    </nb-card-body>
+</nb-card>
 
 
-
-<form #typeForm="ngForm" (ngSubmit)="addForm()" #selectType>
-<select type="number" [(ngModel)]="typeSelected" name="type" id="">
-    <option value="0">number</option>
-    <option value="1">string</option>
-  </select>
-  <button [disabled]="!typeForm.form.valid" type="submit">add</button>  
-</form>

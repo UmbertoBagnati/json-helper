@@ -1,5 +1,11 @@
-<h2>{{formName}} : number</h2>
-<div class="form-group" [formGroup]="numberForm">
-    <label for="value">Value</label>
-    <input formControlName="value" type="text">
-</div>
+<nb-card>
+    <nb-card-header>
+        {{formName}} : number
+    </nb-card-header>
+    <nb-card-body>
+        <div class="form-group" [formGroup]="numberForm">
+            <label for="value">Value</label>
+            <input nbInput formControlName="value" class="m-2" placeholder="{{formName}}" type="number">
+        </div>
+    </nb-card-body>
+</nb-card>

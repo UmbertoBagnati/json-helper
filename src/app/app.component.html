@@ -1,5 +1,14 @@
-<div>    
- 
-<app-object-form #objectForm></app-object-form>
-<button (click)="getInputs()">Add to Json</button>
-</div>
+<nb-layout>
+    <nb-layout-header fixed>Json Helper</nb-layout-header>
+
+    
+    <nb-layout-column>
+        <app-object-form #objectForm></app-object-form>
+        <button nbButton (click)="getInputs()">Add to Json</button>      
+    </nb-layout-column>
+
+    <nb-layout-column>
+
+    </nb-layout-column>
+
+  </nb-layout>

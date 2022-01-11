@@ -19,6 +19,7 @@ export class ArrayFormComponent implements OnInit, AfterViewInit, Form {
   typeSelected:number=0;
   componentRef:ComponentRef<any>[]=[];
   selectionDone:boolean=false;
+  formName: string="";
 
   @ViewChild('selectType') private selectTypeRef!: ElementRef ;
 
@@ -26,17 +27,6 @@ export class ArrayFormComponent implements OnInit, AfterViewInit, Form {
   constructor(private fb : FormBuilder) { 
 
   }
-
-  sendControlsInputs(){
-    let values = "[";
-    for(let e of this.aForm.controls){
-      values += "\""+e.value+"\",";
-    }
-    return values;
-  }
-
-
-  formName: string="";
 
   ngAfterViewInit(): void {
 
@@ -52,33 +42,18 @@ export class ArrayFormComponent implements OnInit, AfterViewInit, Form {
 
   get formZ(): FormGroup{ return this.arrayForm as FormGroup;}
 
+  sendControlsInputs(){
+    let values = this.formName+":[";
+    for(let e of this.aForm.controls){
+      values += "\""+e.value+"\",";
+    }
+    values.slice(0,values.length-1);
+    return values+"]";
+  }
+
+
   
   addForm(){
-    /*
-    let viewContainerRef; 
-    console.log(this.typeSelected);    
-
-    switch(+this.typeSelected){
-      case 0:            
-        viewContainerRef = this.adHost.viewContainerRef;    
-        this.componentRef.push(viewContainerRef.createComponent<NumberFormComponent>(NumberFormComponent));
-        break;
-
-        case 1:
-        viewContainerRef = this.adHost.viewContainerRef;    
-        this.componentRef.push(viewContainerRef.createComponent<StringFormComponent>(StringFormComponent));
-        break;
-        
-        case 2:
-          viewContainerRef = this.adHost.viewContainerRef;    
-          this.componentRef.push(viewContainerRef.createComponent<ArrayFormComponent>(ArrayFormComponent));
-          break;
-
-        case 3:
-          viewContainerRef = this.adHost.viewContainerRef;    
-          this.componentRef.push(viewContainerRef.createComponent<ObjectFormComponent>(ObjectFormComponent));
-          break;
-    }*/
     this.selectionDone = true;
     this.selectTypeRef.nativeElement.remove();
   }
