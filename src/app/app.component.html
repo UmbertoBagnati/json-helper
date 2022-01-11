@@ -1,5 +1,5 @@
 <nb-layout>
-    <nb-layout-header fixed>Json Helper</nb-layout-header>
+    <nb-layout-header fixed><h2>Json Helper</h2></nb-layout-header>
 
     
     <nb-layout-column>
@@ -7,8 +7,10 @@
         <button nbButton (click)="getInputs()">Add to Json</button>      
     </nb-layout-column>
 
-    <nb-layout-column>
-
+    <nb-layout-column style="white-space: pre;">
+        <h2>&#123;[
+        {{jsonString}}
+        ]&#125;</h2>
     </nb-layout-column>
 
   </nb-layout>

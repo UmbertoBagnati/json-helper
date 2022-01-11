@@ -47,7 +47,7 @@ export class ArrayFormComponent implements OnInit, AfterViewInit, Form {
     for(let e of this.aForm.controls){
       values += "\""+e.value+"\",";
     }
-    values.slice(0,values.length-1);
+    values=values.slice(0,values.length-1);
     return values+"]";
   }
 

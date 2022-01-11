@@ -20,6 +20,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('objectForm') elReF!:ObjectFormComponent;
 
   questions$: Observable<QuestionBase<any>[]>;
+  jsonString:string="\n";
 
 
 
@@ -38,6 +39,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   getInputs(){
     console.log(this.elReF.sendControlsInputs());
 
+    this.jsonString+=this.elReF.sendControlsInputs()+",\n";
   }
 
 

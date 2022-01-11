@@ -27,9 +27,9 @@ export class ObjectFormComponent implements OnInit, Form{
     let values = "{\n";
 
     for(let e of this.componentRef){
-      values+= e.instance.sendControlsInputs()+",";
-      values = values.slice(0, values.length-1);
-      values+="\n";
+      values+= e.instance.sendControlsInputs();
+      //values = values.slice(0, values.length-1);
+      values+=",\n";
     }
 
     return values+"}";
